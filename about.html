@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About Us - SmilesLyf</title>
+  <link rel="stylesheet" href="about.css" />
+  <link rel="stylesheet" href="sytlesheet.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+  <style>
+    *
+    
+    {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      line-height: 1.6;
+      background-color: #000000;
+      color: #333;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      background-color: #111;
+    }
+
+    .navbar .logo a {
+      text-decoration: none;
+      font-size: 1.8rem;
+      color: #fff;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+
+    .about-hero {
+      background: linear-gradient(to right, #111, #333);
+      color: white;
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .about-hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    .about-hero span {
+      color: #ff4747;
+    }
+
+    .about-hero p {
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    .about-sections {
+      padding: 60px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .about-section {
+      margin-bottom: 50px;
+    }
+
+    .about-section h2 {
+      font-size: 2rem;
+      color: #ff4747;
+      margin-bottom: 10px;
+    }
+
+    .about-section p {
+      font-size: 1rem;
+      color: #ffffff;
+    }
+
+    /* Footer Styling */
+    .site-footer {
+      background-color: #111;
+      color: #fff;
+      padding: 40px 20px 20px;
+      font-size: 0.95rem;
+    }
+
+    .footer-container {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 30px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .footer-column {
+      flex: 1 1 250px;
+    }
+
+    .footer-column h3 {
+      margin-bottom: 15px;
+      font-size: 1.2rem;
+      border-bottom: 2px solid #444;
+      padding-bottom: 5px;
+      color: #ff4747;
+    }
+
+    .footer-column p,
+    .footer-column a {
+      color: #ccc;
+      text-decoration: none;
+    }
+
+    .footer-column a:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+
+
+    .footer-column ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-column ul li {
+      margin-bottom: 8px;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 30px;
+      border-top: 1px solid #444;
+      padding-top: 15px;
+      color: #aaa;
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 768px) {
+      .footer-container {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .navbar {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .nav-links {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .about-hero h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">
+      <img class="logo" src="Smileslyflogo.jpg" alt="img">
+      <a href="#" >Smileslyf</a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      
+  
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="about-hero">
+    <h1>Welcome to <span>SmilesLyf</span></h1>
+    <p>Your go-to brand for premium, trendy down-shoulder T-shirts. Made for the bold, built for comfort.</p>
+  </header>
+
+  <!-- About Sections -->
+  <div class="about-sections">
+    <div class="about-section story">
+      <h2>Our Story</h2>
+      <p>SmilesLyf was born out of a love for simplicity and streetwear. We're more than just a clothing line — we're a movement. We bring together clean silhouettes, premium cotton, and modern designs that empower self-expression.</p>
+    </div>
+
+    <div class="about-section vision">
+      <h2>Our Vision</h2>
+      <p>To redefine streetwear in Pakistan by crafting bold, down-shoulder T-shirts that reflect the energy and freedom of today’s youth. We stand for creativity, individuality, and fearless style.</p>
+    </div>
+
+    <div class="about-section mission">
+      <h2>Our Mission</h2>
+      <p>To provide high-quality, comfortable, and stylish apparel that’s both affordable and empowering. Every thread is stitched with purpose — to help you own your vibe and smile through life.</p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>About Smileslyf</h3>
+        <p>SmilesLyf creates down-shoulder tees that reflect confidence, comfort, and bold individuality.</p>
+      </div>
+      <div class="footer-column">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+        
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+      
+      
+        <p>Islamabad, Pakistan</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 SmilesLyf. All rights reserved.</p>
+    </div>
+    <script src="menu.js"></script>
+
+  </footer>
+</body>
+</html>

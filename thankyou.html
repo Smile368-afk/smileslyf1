@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thank You - Smileslyf</title>
+  <style>
+    body {
+      background: #0d0d0d;
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .thankyou-box {
+      background: #1a1a1a;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 0 25px rgba(255, 0, 0, 0.2);
+      animation: slideIn 0.8s ease-out forwards;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: crimson;
+    }
+
+    p {
+      font-size: 1.1rem;
+      margin-top: 15px;
+      color: #ccc;
+    }
+
+    .back-btn {
+      margin-top: 30px;
+      padding: 12px 24px;
+      font-size: 1rem;
+      background: crimson;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .back-btn:hover {
+      background: #900;
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateY(100px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .confetti {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: crimson;
+      animation: fall 3s linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-10vh) rotate(0deg);
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="thankyou-box">
+    <h1>🎉 Thank You!</h1>
+    <p>Your order has been received. We'll contact you shortly to confirm the details.</p>
+    <button class="back-btn" onclick="window.location.href='index.html'">Continue Shopping</button>
+  </div>
+
+  <script>
+    // Confetti Animation Generator
+    for (let i = 0; i < 50; i++) {
+      const confetti = document.createElement('div');
+      confetti.classList.add('confetti');
+      confetti.style.left = Math.random() * 100 + 'vw';
+      confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+      confetti.style.animationDuration = (2 + Math.random() * 2) + 's';
+      confetti.style.opacity = Math.random();
+      document.body.appendChild(confetti);
+    }
+  </script>
+</body>
+</html>

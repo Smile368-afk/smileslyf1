@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Buy Down Shoulder T-Shirt</title>
+  <link rel="stylesheet" href="sytlesheet.css" />
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">
+      <a href="#">Smileslyf</a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+     <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="cart.html">Cart (<span id="cart-count">0</span>)</a></li>
+    </ul>
+  </nav>
+
+  <!-- Product Section -->
+  <div class="container">
+    <div class="product-image">
+      <img src="Images/lionking.png" alt="product-image" />
+    </div>
+
+    <div class="product-details">
+      <h1>Down Shoulder T-Shirt</h1>
+      <p>Premium quality, soft fabric, perfect for all-day wear. Available in multiple gray shades and sizes.</p>
+      <p class="price" id="product-price">PKR 1499</p>
+
+      <div class="select-group">
+        <label for="size">Select Size:</label>
+        <select id="size">
+          
+          <option value="M">Medium</option>
+          <option value="L">Large</option>
+          
+        </select>
+      </div>
+
+      <div class="select-group">
+        <label>Choose Color:</label>
+        <div class="colors">
+          <div class="color-option" style="background-color: black;" title="Black"></div>
+
+         
+      </div>
+
+      <div class="select-group">
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" min="1" value="1" />
+      </div>
+
+      <button class="add-to-cart-btn"
+              data-product="Down Shoulder T-Shirt"
+              data-price="1499">Add to Cart</button>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+  function handleAddToCart(productName, productPrice) {
+    const quantity = parseInt(document.getElementById('quantity').value);
+    const size = document.getElementById('size').value;
+    const imageSrc = document.querySelector('.product-image img').src; // ✅ Get image URL
+
+    const item = {
+      product: productName,
+      price: parseFloat(productPrice),
+      quantity: quantity,
+      size: size,
+      image: imageSrc // ✅ Store it
+    };
+
+    cart.push(item);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    alert(`${productName} (Size: ${size}, Qty: ${quantity}) added to cart!`);
+    updateCartCount();
+  }
+
+  function updateCartCount() {
+    const countEl = document.getElementById('cart-count');
+    countEl.innerText = cart.length;
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelector('.add-to-cart-btn').addEventListener('click', (event) => {
+      const product = event.target.getAttribute('data-product');
+      const price = event.target.getAttribute('data-price');
+      handleAddToCart(product, price);
+    });
+
+    updateCartCount();
+  });
+</script>
+
+</body>
+</html>
