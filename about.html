@@ -8,9 +8,7 @@
   <link rel="stylesheet" href="sytlesheet.css">
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
   <style>
-    *
-    
-    {
+    * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
@@ -31,11 +29,29 @@
       background-color: #111;
     }
 
+    .navbar .logo {
+      display: flex; 
+      align-items: center; 
+      gap: 10px;
+    }
+
+    .navbar .logo img {
+      width: 40px; 
+      height: 40px; 
+      border-radius: 50%;
+    }
+
     .navbar .logo a {
-      text-decoration: none;
-      font-size: 1.8rem;
-      color: #fff;
+      color: #fff; 
+      text-decoration: none; 
+      font-size: 1.8rem; 
       font-weight: bold;
+    }
+
+    .nav-group {
+      display: flex;
+      align-items: center;
+      gap: 20px;
     }
 
     .nav-links {
@@ -48,6 +64,15 @@
       color: #fff;
       text-decoration: none;
       font-size: 1rem;
+    }
+
+    #menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
     }
 
     .about-hero {
@@ -93,7 +118,6 @@
       color: #ffffff;
     }
 
-    /* Footer Styling */
     .site-footer {
       background-color: #111;
       color: #fff;
@@ -133,7 +157,6 @@
       text-decoration: underline;
     }
 
-
     .footer-column ul {
       list-style: none;
       padding: 0;
@@ -159,13 +182,32 @@
       }
 
       .navbar {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+      }
+
+      .nav-group {
         flex-direction: column;
-        gap: 10px;
+        align-items: flex-end;
+      }
+
+      #menu-toggle {
+        display: block;
       }
 
       .nav-links {
+        display: none;
         flex-direction: column;
         gap: 10px;
+        background-color: #111;
+        padding: 10px 0;
+        width: 100%;
+        align-items: flex-end;
+      }
+
+      .nav-links.active {
+        display: flex;
       }
 
       .about-hero h1 {
@@ -179,14 +221,16 @@
   <nav class="navbar">
     <div class="logo">
       <img class="logo" src="Smileslyflogo.jpg" alt="img">
-      <a href="#" >Smileslyf</a>
+      <a href="#">Smileslyf</a>
     </div>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      
-  
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
+
+    <div class="nav-group">
+      <button id="menu-toggle">☰</button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
   </nav>
 
   <!-- Hero Section -->
@@ -224,13 +268,10 @@
         <h3>Quick Links</h3>
         <ul>
           <li><a href="index.html">Home</a></li>
-        
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </div>
       <div class="footer-column">
-      
-      
         <p>Islamabad, Pakistan</p>
       </div>
     </div>
@@ -238,7 +279,16 @@
       <p>&copy; 2025 SmilesLyf. All rights reserved.</p>
     </div>
     <script src="menu.js"></script>
-
   </footer>
+
+  <!-- Mobile menu script -->
+  <script>
+    const menuToggle = document.getElementById("menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+
+    menuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+  </script>
 </body>
 </html>
