@@ -8,15 +8,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   <style>
-        .navbar .logo {
-      display: flex; align-items: center; gap: 10px;
-    }
-    .navbar .logo img {
-      width: 40px; height: 40px; border-radius: 50%;
-    }
-    .navbar .logo a {
-      color: #fff; text-decoration: none; font-size: 1.8rem; font-weight: bold;
-    }
     /* Minimal required CSS fix */
     @media (max-width: 768px) {
       .nav-links {
@@ -35,6 +26,15 @@
         display: block;
       }
     }
+     .navbar .logo {
+      display: flex; align-items: center; gap: 10px;
+    }
+    .navbar .logo img {
+      width: 40px; height: 40px; border-radius: 50%;
+    }
+    .navbar .logo a {
+      color: #fff; text-decoration: none; font-size: 1.8rem; font-weight: bold;
+    }
   </style>
 </head>
 <body>
@@ -51,6 +51,7 @@
       <li><a href="#products">Shop</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="contact.html">Contact</a></li>
+      <li><a href="cart.html">Cart (<span id="cart-count">0</span>)</a></li>
     </ul>
 
     <div class="menu-toggle" id="menu-toggle">☰</div>
