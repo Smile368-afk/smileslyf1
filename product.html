@@ -5,17 +5,61 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Buy Down Shoulder T-Shirt</title>
   <link rel="stylesheet" href="sytlesheet.css" />
+  <style>
+    /* Mobile navbar styles */
+    .menu-toggle {
+      display: none;
+      font-size: 1.8rem;
+      color: white;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        z-index: 999;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background-color: #111;
+        width: 200px;
+        padding: 10px;
+        border-radius: 5px;
+        z-index: 998;
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .nav-links li {
+        margin: 10px 0;
+      }
+    }
+  </style>
 </head>
 <body>
 
   <!-- Navbar -->
   <nav class="navbar">
     <div class="logo">
+      <img src="Smileslyflogo.jpg" alt="SmilesLyf Logo">
       <a href="#">Smileslyf</a>
     </div>
-    <ul class="nav-links">
+    <button class="menu-toggle" id="menu-toggle">☰</button>
+    <ul class="nav-links" id="navLinks">
       <li><a href="index.html">Home</a></li>
-     <li><a href="about.html">About</a></li>
+      <li><a href="about.html">About</a></li>
       <li><a href="contact.html">Contact</a></li>
       <li><a href="cart.html">Cart (<span id="cart-count">0</span>)</a></li>
     </ul>
@@ -35,10 +79,8 @@
       <div class="select-group">
         <label for="size">Select Size:</label>
         <select id="size">
-          
           <option value="M">Medium</option>
           <option value="L">Large</option>
-          
         </select>
       </div>
 
@@ -46,8 +88,7 @@
         <label>Choose Color:</label>
         <div class="colors">
           <div class="color-option" style="background-color: black;" title="Black"></div>
-
-         
+        </div>
       </div>
 
       <div class="select-group">
@@ -63,42 +104,50 @@
 
   <!-- JavaScript -->
   <script>
-  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-  function handleAddToCart(productName, productPrice) {
-    const quantity = parseInt(document.getElementById('quantity').value);
-    const size = document.getElementById('size').value;
-    const imageSrc = document.querySelector('.product-image img').src; // ✅ Get image URL
+    function handleAddToCart(productName, productPrice) {
+      const quantity = parseInt(document.getElementById('quantity').value);
+      const size = document.getElementById('size').value;
+      const imageSrc = document.querySelector('.product-image img').src;
 
-    const item = {
-      product: productName,
-      price: parseFloat(productPrice),
-      quantity: quantity,
-      size: size,
-      image: imageSrc // ✅ Store it
-    };
+      const item = {
+        product: productName,
+        price: parseFloat(productPrice),
+        quantity: quantity,
+        size: size,
+        image: imageSrc
+      };
 
-    cart.push(item);
-    localStorage.setItem('cart', JSON.stringify(cart));
-    alert(`${productName} (Size: ${size}, Qty: ${quantity}) added to cart!`);
-    updateCartCount();
-  }
+      cart.push(item);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert(`${productName} (Size: ${size}, Qty: ${quantity}) added to cart!`);
+      updateCartCount();
+    }
 
-  function updateCartCount() {
-    const countEl = document.getElementById('cart-count');
-    countEl.innerText = cart.length;
-  }
+    function updateCartCount() {
+      const countEl = document.getElementById('cart-count');
+      countEl.innerText = cart.length;
+    }
 
-  document.addEventListener('DOMContentLoaded', () => {
-    document.querySelector('.add-to-cart-btn').addEventListener('click', (event) => {
-      const product = event.target.getAttribute('data-product');
-      const price = event.target.getAttribute('data-price');
-      handleAddToCart(product, price);
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelector('.add-to-cart-btn').addEventListener('click', (event) => {
+        const product = event.target.getAttribute('data-product');
+        const price = event.target.getAttribute('data-price');
+        handleAddToCart(product, price);
+      });
+
+      updateCartCount();
+
+      // Mobile menu toggle
+      const toggleBtn = document.getElementById("menu-toggle");
+      const navLinks = document.getElementById("navLinks");
+
+      toggleBtn.addEventListener("click", () => {
+        navLinks.classList.toggle("show");
+      });
     });
-
-    updateCartCount();
-  });
-</script>
+  </script>
 
 </body>
 </html>
