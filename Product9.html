@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Buy Down Shoulder T-Shirt</title>
+  <link rel="stylesheet" href="sytlesheet.css" />
+  <link rel="icon" type="image/png" href="Smileslyflogo.jpg">
+  <style>
+    /* Only needed if your CSS doesn't already handle these */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle div {
+      width: 25px;
+      height: 3px;
+      background-color: #fff;
+      margin: 4px 0;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: flex;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background-color: #111;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        width: 200px;
+        border-radius: 5px;
+        z-index: 1000;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .nav-links li {
+        margin: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">
+      <img src="Smileslyflogo.jpg" alt="SmilesLyf Logo">
+      <a href="#">Smileslyf</a>
+    </div>
+
+    <!-- Toggle button for mobile -->
+    <div class="menu-toggle" id="menu-toggle">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+
+    <ul class="nav-links" id="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="cart.html">Cart (<span id="cart-count">0</span>)</a></li>
+    </ul>
+  </nav>
+
+  <!-- Product Section -->
+  <div class="container">
+    <div class="product-image">
+      <img src="Images/lionking.png" alt="product-image" />
+    </div>
+
+    <div class="product-details">
+      <h1>Down Shoulder T-Shirt</h1>
+      <p>Premium quality, soft fabric, perfect for all-day wear. Available in multiple gray shades and sizes.</p>
+      <p class="price" id="product-price">PKR 1499</p>
+
+      <div class="select-group">
+        <label for="size">Select Size:</label>
+        <select id="size">
+          
+          <option value="M">Medium</option>
+          <option value="L">Large</option>
+          
+        </select>
+      </div>
+
+      <div class="select-group">
+        <label>Colour:</label>
+        <div class="colors">
+          <div class="color-option" style="background-color: Navy;" title="Navy Blue"></div>
+
+
+        </div>
+      </div>
+
+      <div class="select-group">
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" min="1" value="1" />
+      </div>
+
+      <button class="add-to-cart-btn" data-product="Down Shoulder T-Shirt" data-price="1499">Add to Cart</button>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    // Cart Functionality
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    function handleAddToCart(productName, productPrice) {
+      const quantity = parseInt(document.getElementById('quantity').value);
+      const size = document.getElementById('size').value;
+      const imageSrc = document.querySelector('.product-image img').src;
+
+      const item = {
+        product: productName,
+        price: parseFloat(productPrice),
+        quantity: quantity,
+        size: size,
+        image: imageSrc
+      };
+
+      cart.push(item);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert(`${productName} (Size: ${size}, Qty: ${quantity}) added to cart!`);
+      updateCartCount();
+    }
+
+    function updateCartCount() {
+      const countEl = document.getElementById('cart-count');
+      countEl.innerText = cart.length;
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelector('.add-to-cart-btn').addEventListener('click', (event) => {
+        const product = event.target.getAttribute('data-product');
+        const price = event.target.getAttribute('data-price');
+        handleAddToCart(product, price);
+      });
+
+      updateCartCount();
+
+      // Toggle navbar for mobile
+      const toggle = document.getElementById('menu-toggle');
+      const navLinks = document.getElementById('nav-links');
+
+      toggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+      });
+    });
+  </script>
+
+</body>
+</html>
