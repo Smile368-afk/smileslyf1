@@ -7,47 +7,48 @@
   <link rel="stylesheet" href="sytlesheet.css" />
   <link rel="icon" type="image/png" href="Smileslyflogo.jpg">
   <style>
-    /* Only needed if your CSS doesn't already handle these */
+    /* Mobile navbar styles */
     .menu-toggle {
       display: none;
-      flex-direction: column;
+      font-size: 1.8rem;
+      color: white;
+      background: none;
+      border: none;
       cursor: pointer;
-    }
-
-    .menu-toggle div {
-      width: 25px;
-      height: 3px;
-      background-color: #fff;
-      margin: 4px 0;
     }
 
     @media (max-width: 768px) {
       .menu-toggle {
-        display: flex;
+        display: block;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        z-index: 999;
       }
+   
 
       .nav-links {
         display: none;
         flex-direction: column;
-        background-color: #111;
         position: absolute;
         top: 60px;
-        right: 20px;
+        right: 0;
+        background-color: #111;
         width: 200px;
+        padding: 10px;
         border-radius: 5px;
-        z-index: 1000;
+        z-index: 998;
       }
 
-      .nav-links.active {
+      .nav-links.show {
         display: flex;
       }
 
       .nav-links li {
-        margin: 10px;
+        margin: 10px 0;
       }
     }
-
-     .navbar .logo {
+       .navbar .logo {
       display: block; align-items: center; gap: 10px;
     }
     .navbar .logo img {
@@ -165,5 +166,6 @@
 
 </body>
 </html>
+
 
 
