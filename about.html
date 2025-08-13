@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="sytlesheet.css">
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/png" href="Smileslyflogo.jpg">
-  <style>
+ <style>
     * {
       box-sizing: border-box;
       margin: 0;
@@ -119,11 +119,13 @@
       color: #ffffff;
     }
 
+    /* ==== UPDATED FOOTER STYLES ==== */
     .site-footer {
-      background-color: #111;
-      color: #fff;
-      padding: 40px 20px 20px;
+      background-color: #0d0d0d;
+      color: #e0e0e0;
+      padding: 50px 20px 20px;
       font-size: 0.95rem;
+      border-top: 2px solid #222;
     }
 
     .footer-container {
@@ -142,19 +144,21 @@
     .footer-column h3 {
       margin-bottom: 15px;
       font-size: 1.2rem;
-      border-bottom: 2px solid #444;
-      padding-bottom: 5px;
+      font-weight: bold;
       color: #ff4747;
+      border-bottom: 2px solid #333;
+      padding-bottom: 5px;
     }
 
     .footer-column p,
     .footer-column a {
-      color: #ccc;
+      color: #b0b0b0;
       text-decoration: none;
+      transition: color 0.3s ease;
     }
 
     .footer-column a:hover {
-      color: #fff;
+      color: #ff4747;
       text-decoration: underline;
     }
 
@@ -170,16 +174,22 @@
     .footer-bottom {
       text-align: center;
       margin-top: 30px;
-      border-top: 1px solid #444;
+      border-top: 1px solid #222;
       padding-top: 15px;
-      color: #aaa;
+      color: #888;
       font-size: 0.85rem;
     }
 
+    /* Mobile */
     @media (max-width: 768px) {
       .footer-container {
         flex-direction: column;
         text-align: center;
+        gap: 20px;
+      }
+
+      .footer-column {
+        flex: 1 1 auto;
       }
 
       .navbar {
@@ -215,7 +225,8 @@
         font-size: 2rem;
       }
     }
-  </style>
+</style>
+
 </head>
 <body>
   <!-- Navbar -->
@@ -293,4 +304,5 @@
   </script>
 </body>
 </html>
+
 
