@@ -29,7 +29,7 @@
       }
     }
 
-    .logo {
+  .logo {
   display: flex !important;
   align-items: center;
   flex-wrap: nowrap;
@@ -38,16 +38,19 @@
 
 .logo img {
   height: 34px;
-  width: auto;
+  width: 34px; /* keep width equal to height for perfect circle */
   display: block;
+  border-radius: 50%; /* makes it round */
+  object-fit: cover; /* ensures image fits inside the circle */
 }
 
 .logo-name {
   font-size: 1.5rem;
   font-weight: bold;
   color: #ffffff;
-  white-space: nowrap; /* prevents text from wrapping below */
+  white-space: nowrap;
 }
+
 
   </style>
 </head>
@@ -364,6 +367,7 @@
 </footer>
 </body>
 </html>
+
 
 
 
