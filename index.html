@@ -29,15 +29,26 @@
       }
     }
 
-     .navbar .logo {
-      display: block; align-items: center; gap: 10px;
-    }
-    .navbar .logo img {
-      width: 40px; height: 40px; border-radius: 50%;
-    }
-    .navbar .logo a {
-      color: #fff; text-decoration: none; font-size: 1.8rem; font-weight: bold;
-    }
+    .logo {
+  display: flex !important;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 8px;
+}
+
+.logo img {
+  height: 34px;
+  width: auto;
+  display: block;
+}
+
+.logo-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffffff;
+  white-space: nowrap; /* prevents text from wrapping below */
+}
+
   </style>
 </head>
 <body>
@@ -353,6 +364,7 @@
 </footer>
 </body>
 </html>
+
 
 
 
