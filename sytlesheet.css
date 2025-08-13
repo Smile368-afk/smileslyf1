@@ -42,7 +42,6 @@ body {
 
 /* Logo */
 .navbar .logo a {
- 
   color: #fd0101;
   font-size: 24px;
   font-weight: bold;
@@ -235,7 +234,6 @@ body {
     margin-bottom: 20px;
     color: #ff4747;
 }
-
 
 .about p {
     max-width: 800px;
@@ -548,3 +546,21 @@ input[type="number"]:focus {
         flex-direction: column;
       }
     }
+
+/* ✅ Logo Name Styling */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo img {
+  height: 34px;
+  width: auto;
+}
+
+.logo-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffffff;
+}
