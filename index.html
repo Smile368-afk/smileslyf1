@@ -10,24 +10,38 @@
   <link rel="icon" type="image/png" href="Smileslyflogo.jpg">
 
   <style>
-    /* Minimal required CSS fix */
-    @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-      }
-      .mobile-menu {
-        display: none;
-        background: #222;
-        padding: 10px;
-        position: absolute;
-        top: 60px;
-        right: 0;
-        width: 200px;
-      }
-      .mobile-menu.show {
-        display: block;
-      }
-    }
+   /* Mobile view adjustments only */
+@media (max-width: 768px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr); /* two per row */
+    gap: 8px;
+  }
+
+  .product-card {
+    padding: 8px; /* smaller padding */
+    margin: 0; 
+  }
+
+  .product-card img {
+    max-height: 130px; /* smaller image height */
+    object-fit: contain;
+  }
+
+  .product-card h3 {
+    font-size: 0.9rem; /* smaller product name */
+  }
+
+  .product-card p {
+    font-size: 0.85rem; /* smaller price */
+  }
+
+  .product-card button,
+  .product-card a {
+    font-size: 0.85rem;
+    padding: 6px 10px; /* smaller buttons */
+  }
+}
+
 
   .logo {
   display: flex !important;
@@ -392,6 +406,7 @@
 </footer>
 </body>
 </html>
+
 
 
 
