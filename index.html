@@ -66,6 +66,50 @@
 }
 
 
+    /* Terms Popup */
+.popup-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+  z-index: 9999;
+}
+
+.popup-content {
+  background: white;
+  max-width: 500px;
+  margin: 100px auto;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.popup-content h2 {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.popup-content p {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.popup-content button {
+  background: #ff6600;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.popup-content button:hover {
+  background: #e65c00;
+}
+
+
   </style>
 </head>
 <body>
@@ -369,6 +413,8 @@
 </section>
 
 
+
+  
 <!-- About Section -->
 <section id="about" class="about">
   <h2>About Us</h2>
@@ -404,11 +450,40 @@
 
     toggleBtn.addEventListener('click', () => {
       mobileMenu.classList.toggle('show');
+      
     });
+
+    document.addEventListener("DOMContentLoaded", function() {
+  if (!localStorage.getItem("termsAccepted")) {
+    document.getElementById("termsPopup").style.display = "block";
+  }
+
+  document.getElementById("acceptTerms").addEventListener("click", function() {
+    localStorage.setItem("termsAccepted", "true");
+    document.getElementById("termsPopup").style.display = "none";
+  });
+});
   </script>
 </footer>
+  <!-- Terms & Services Popup -->
+<div id="termsPopup" class="popup-overlay">
+  <div class="popup-content">
+    <h2>Terms & Services</h2>
+    <p>
+      Welcome to Smileslyf! By using our website, you agree to our terms:
+      <br>✔ All products are as described.
+      <br>✔ Payments are non-refundable except for damaged goods.
+      <br>✔ Shipping timelines may vary.
+      <br>✔ Respectful communication is expected.
+      <br><br>Read full terms <a href="terms.html" target="_blank">here</a>.
+    </p>
+    <button id="acceptTerms">I Agree</button>
+  </div>
+</div>
+
 </body>
 </html>
+
 
 
 
