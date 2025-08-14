@@ -435,64 +435,68 @@
   const mobileMenu = document.getElementById('mobile-menu');
   toggleBtn.addEventListener('click', () => { mobileMenu.classList.toggle('show'); });
 
-document.addEventListener("DOMContentLoaded", function() {
-  const termsPopup = document.getElementById("termsPopup");
-  const acceptBtn = document.getElementById("acceptTerms");
+  document.addEventListener("DOMContentLoaded", function() {
+    // Terms & Services popup
+    const termsPopup = document.getElementById("termsPopup");
+    const acceptBtn = document.getElementById("acceptTerms");
 
-  if (!localStorage.getItem("termsAccepted")) {
-    termsPopup.style.display = "flex";
-  }
-
-  acceptBtn.addEventListener("click", function() {
-    localStorage.setItem("termsAccepted", "true");
-    termsPopup.style.display = "none";
-  });
-});
-
-
-  // Load reviews dynamically
-  const reviewsContainer = document.getElementById('reviews-container');
-  async function loadReviews() {
-    try {
-      const res = await fetch('https://smileslyfb.onrender.com/reviews');
-      const reviews = await res.json();
-      reviewsContainer.innerHTML = reviews.map(r => `
-        <div style="background:#1c1c1c; padding:20px; border-radius:10px; margin-bottom:20px;">
-          <h3 style="margin-bottom:8px;">${'⭐️'.repeat(r.rating)} ${r.name}</h3>
-          <p style="color:#ccc;">${r.comment}</p>
-        </div>
-      `).join('');
-    } catch (err) { console.error('Failed to load reviews:', err); }
-  }
-  loadReviews();
-
-  // Review form submission
-  const reviewForm = document.getElementById('review-form');
-  reviewForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const name = document.getElementById('review-name').value.trim();
-    const comment = document.getElementById('review-comment').value.trim();
-    const rating = document.querySelector('input[name="rating"]:checked')?.value;
-
-    if (!name || !comment || !rating) {
-      alert("Please fill all fields and select a rating.");
-      return;
+    if (termsPopup && !localStorage.getItem("termsAccepted")) {
+      termsPopup.style.display = "flex";
     }
 
-    try {
-      const res = await fetch('https://smileslyfb.onrender.com/reviews', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, rating: Number(rating), comment })
+    if (acceptBtn) {
+      acceptBtn.addEventListener("click", function() {
+        localStorage.setItem("termsAccepted", "true");
+        termsPopup.style.display = "none";
       });
-      const text = await res.text();
-      alert(text);
+    }
 
-      reviewForm.reset();
-      loadReviews();
-    } catch (err) {
-      console.error('Failed to submit review:', err);
-      alert('Failed to submit review.');
+    // Load reviews dynamically
+    const reviewsContainer = document.getElementById('reviews-container');
+    async function loadReviews() {
+      try {
+        const res = await fetch('https://smileslyfb.onrender.com/reviews');
+        const reviews = await res.json();
+        reviewsContainer.innerHTML = reviews.map(r => `
+          <div style="background:#1c1c1c; padding:20px; border-radius:10px; margin-bottom:20px;">
+            <h3 style="margin-bottom:8px;">${'⭐️'.repeat(r.rating)} ${r.name}</h3>
+            <p style="color:#ccc;">${r.comment}</p>
+          </div>
+        `).join('');
+      } catch (err) { console.error('Failed to load reviews:', err); }
+    }
+    loadReviews();
+
+    // Review form submission
+    const reviewForm = document.getElementById('review-form');
+    if (reviewForm) {
+      reviewForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const name = document.getElementById('review-name').value.trim();
+        const comment = document.getElementById('review-comment').value.trim();
+        const rating = document.querySelector('input[name="rating"]:checked')?.value;
+
+        if (!name || !comment || !rating) {
+          alert("Please fill all fields and select a rating.");
+          return;
+        }
+
+        try {
+          const res = await fetch('https://smileslyfb.onrender.com/reviews', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, rating: Number(rating), comment })
+          });
+          const text = await res.text();
+          alert(text);
+
+          reviewForm.reset();
+          loadReviews();
+        } catch (err) {
+          console.error('Failed to submit review:', err);
+          alert('Failed to submit review.');
+        }
+      });
     }
   });
 </script>
@@ -500,6 +504,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 </body>
 </html>
+
 
 
 
