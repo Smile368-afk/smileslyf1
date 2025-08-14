@@ -564,3 +564,10 @@ input[type="number"]:focus {
   font-weight: bold;
   color: #ffffff;
 }
+
+/* ✅ Two products per row on mobile */
+@media (max-width: 768px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
