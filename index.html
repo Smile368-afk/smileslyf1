@@ -427,7 +427,6 @@
     <button id="acceptTerms">I Agree</button>
   </div>
 </div>
-<!-- Scripts -->
 <script>
   // Mobile menu toggle
   const toggleBtn = document.getElementById('menu-toggle');
@@ -456,13 +455,17 @@
       try {
         const res = await fetch('https://smileslyfb.onrender.com/reviews');
         const reviews = await res.json();
+        if (!reviewsContainer) return;
+
         reviewsContainer.innerHTML = reviews.map(r => `
           <div style="background:#1c1c1c; padding:20px; border-radius:10px; margin-bottom:20px;">
             <h3 style="margin-bottom:8px;">${'⭐️'.repeat(r.rating)} ${r.name}</h3>
             <p style="color:#ccc;">${r.comment}</p>
           </div>
         `).join('');
-      } catch (err) { console.error('Failed to load reviews:', err); }
+      } catch (err) { 
+        console.error('Failed to load reviews:', err); 
+      }
     }
     loadReviews();
 
@@ -476,7 +479,7 @@
         const rating = document.querySelector('input[name="rating"]:checked')?.value;
 
         if (!name || !comment || !rating) {
-          alert("Please fill all fields and select a rating.");
+          alert("❌ Please fill all fields and select a rating.");
           return;
         }
 
@@ -486,14 +489,18 @@
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ name, rating: Number(rating), comment })
           });
-          const text = await res.text();
-          alert(text);
 
-          reviewForm.reset();
-          loadReviews();
+          if (res.ok) {
+            alert("✅ Review submitted successfully!");
+            reviewForm.reset();
+            loadReviews();
+          } else {
+            const text = await res.text();
+            alert("❌ " + text);
+          }
         } catch (err) {
           console.error('Failed to submit review:', err);
-          alert('Failed to submit review.');
+          alert('❌ Failed to submit review.');
         }
       });
     }
@@ -503,6 +510,7 @@
 
 </body>
 </html>
+
 
 
 
